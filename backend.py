@@ -81,6 +81,7 @@ def retrieve_similar_documents(query):
         logging.error(f"Error retrieving documents: {str(e)}")
         return []
 
+# Response Generation using mixtral-8x7b-32768 Model
 def generate_response(query):
     """Retrieve documents and generate AI-based response."""
     retrieved_docs = retrieve_similar_documents(query)
