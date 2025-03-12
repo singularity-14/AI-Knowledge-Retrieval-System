@@ -8,7 +8,7 @@ The **AI Knowledge Retrieval System** is a Streamlit-based application that fetc
 - Stores and indexes the retrieved text using **FAISS**.
 - Uses **HuggingFace Embeddings** for vector representation.
 - Retrieves similar documents based on queries.
-- Generates AI-powered responses using **LangChain and Groq LLM**.
+- Generates AI-powered responses using **LangChain and Groq LLM (mixtral-8x7b-32768)**.
 
 ## Project Structure
 ```
@@ -56,7 +56,7 @@ streamlit run app.py
 2. The system **fetches relevant data** from Wikipedia or ArXiv.
 3. The text is **converted into embeddings** and stored in a **FAISS index**.
 4. The **retrieved documents** are passed to a **Large Language Model (LLM)**.
-5. The **LLM generates a response** based on the stored knowledge.
+5. The **LLM (mixtral-8x7b-32768) generates a response** based on the stored knowledge.
 6. The response is displayed in the UI.
 
 ## Technologies Used
@@ -64,7 +64,7 @@ streamlit run app.py
 - **Streamlit** (UI Framework)
 - **FAISS** (Vector Search)
 - **LangChain** (LLM Processing)
-- **Groq API** (LLM Model)
+- **Groq API** (LLM Model [mixtral-8x7b-32768])
 - **HuggingFace Embeddings** (Text Vectorization)
 - **Wikipedia API** (Data Retrieval)
 - **ArXiv API** (Research Papers)
