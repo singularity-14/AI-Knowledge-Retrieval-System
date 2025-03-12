@@ -8,7 +8,7 @@ The **AI Knowledge Retrieval System** is a Streamlit-based application that fetc
 - Stores and indexes the retrieved text using **FAISS**.
 - Uses **HuggingFace Embeddings** for vector representation.
 - Retrieves similar documents based on queries.
-- Generates AI-powered responses using **LangChain and Groq LLM (mixtral-8x7b-32768)**.
+- Generates AI-powered responses using **LangChain and LLM from Groq (mixtral-8x7b-32768)**.
 
 ## Project Structure
 ```
