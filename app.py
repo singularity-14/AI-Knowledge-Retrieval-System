@@ -1,7 +1,7 @@
+# Essential Libraries
 import time
 import streamlit as st
-from backend import *  # Ensure this has functions for fetching data and interacting with LLM
-
+from backend import *
 # Streamlit UI Setup
 st.set_page_config(page_title="AI Knowledge Retrieval", layout="wide")
 st.title("📚 AI Knowledge Retrieval System")
