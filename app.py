@@ -2,6 +2,7 @@
 import time
 import streamlit as st
 from backend import *
+
 # Streamlit UI Setup
 st.set_page_config(page_title="AI Knowledge Retrieval", layout="wide")
 st.title("📚 AI Knowledge Retrieval System")
@@ -17,8 +18,10 @@ if fetch_data_btn and query:
     st.write("🔄 Fetching relevant data...")
     
     if data_source == "Wikipedia":
+        # Data from wikipedia
         retrieved_data = fetch_wikipedia_text(query)
     else:
+        # Data from arxiv
         retrieved_data = fetch_arxiv_papers(query, max_results=2)
 
     if retrieved_data:
