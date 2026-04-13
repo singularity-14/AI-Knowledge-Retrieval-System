@@ -1,73 +1,129 @@
-# AI Knowledge Retrieval System
+# 🧠 AI Knowledge Retrieval System
 
-## Overview
-The **AI Knowledge Retrieval System** is a Streamlit-based application that fetches relevant information from Wikipedia or ArXiv papers, stores the data using FAISS embeddings, and utilizes a Large Language Model (LLM) to generate responses based on the retrieved knowledge.
+> A RAG-powered research assistant that fetches real-time knowledge from Wikipedia and ArXiv, indexes it with FAISS vector search, and generates accurate answers using Mixtral-8x7B on Groq — all through a clean Streamlit interface.
 
-## Features
-- Fetches data from **Wikipedia** or **ArXiv Papers**.
-- Stores and indexes the retrieved text using **FAISS**.
-- Uses **HuggingFace Embeddings** for vector representation.
-- Retrieves similar documents based on queries.
-- Generates AI-powered responses using **LangChain and LLM from Groq (mixtral-8x7b-32768)**.
+---
 
-## Project Structure
+## 📌 Project Overview
+
+Traditional LLMs are limited to their training data. This project solves that by building a **dynamic knowledge retrieval pipeline** — the system fetches up-to-date content from Wikipedia or ArXiv at query time, embeds it into a FAISS vector store, and uses an LLM to generate grounded, source-backed answers.
+
+Great for research queries, literature exploration, and understanding cutting-edge papers without leaving the app.
+
+---
+
+## ✨ Key Features
+
+| Feature | Description |
+|---------|-------------|
+| 🌐 Live data sources | Fetches real-time content from Wikipedia and ArXiv |
+| 🔍 Semantic search | FAISS vector index for fast similarity-based retrieval |
+| 🤗 HuggingFace embeddings | Open-source text vectorization — no OpenAI dependency |
+| 🤖 LLM-powered answers | Mixtral-8x7B on Groq generates responses grounded in retrieved docs |
+| ⚡ Low-latency inference | Groq API delivers near-instant LLM responses |
+| 🖥️ Interactive UI | Clean Streamlit interface for seamless user interaction |
+
+---
+
+## 🚀 Tech Stack
+
+| Category | Tools |
+|----------|-------|
+| Language | Python 3.8+ |
+| LLM | Mixtral-8x7B-32768 (via Groq) |
+| RAG Framework | LangChain |
+| Vector Database | FAISS |
+| Embeddings | HuggingFace Sentence Transformers |
+| Data Sources | Wikipedia API, ArXiv API |
+| Frontend | Streamlit |
+| Config | python-dotenv |
+
+---
+
+## 🏗️ How It Works
+
 ```
-📁 AI-Knowledge-Retrieval
-│-- backend.py        # Backend functions for data retrieval, embedding, and LLM interaction
-│-- app.py            # Streamlit UI for user interaction
-│-- .env              # Stores API keys (GROQ_API_KEY)
-│-- requirements.txt  # Dependencies
-│-- README.md         # Documentation
+User enters a topic or question
+        ↓
+Fetch relevant content
+  ├── Wikipedia API
+  └── ArXiv Papers API
+        ↓
+Chunk & embed text
+  └── HuggingFace Embeddings → FAISS Vector Index
+        ↓
+Semantic retrieval of most relevant chunks
+        ↓
+Retrieved context + query → Mixtral-8x7B (Groq)
+        ↓
+Grounded, accurate response displayed in UI
 ```
 
-## Installation
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/your-repo/AI-Knowledge-Retrieval.git
-   cd AI-Knowledge-Retrieval
-   ```
+---
 
-2. **Create a virtual environment** (optional but recommended)
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows use: venv\Scripts\activate
-   ```
+## ⚙️ Getting Started
 
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+### 1. Clone the repository
+```bash
+git clone https://github.com/<your-username>/AI-Knowledge-Retrieval.git
+cd AI-Knowledge-Retrieval
+```
 
-4. **Set up API Keys**
-   - Create a `.env` file in the project root.
-   - Add your **Groq API Key**:
-     ```
-     GROQ_API_KEY=your_api_key_here
-     ```
+### 2. Create a virtual environment (recommended)
+```bash
+python -m venv venv
+source venv/bin/activate        # macOS/Linux
+venv\Scripts\activate           # Windows
+```
 
-## Usage
-Run the application using Streamlit:
+### 3. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configure environment variables
+
+Create a `.env` file in the project root:
+```bash
+GROQ_API_KEY=your_groq_api_key_here
+```
+> Get your free Groq API key at [console.groq.com](https://console.groq.com)
+
+### 5. Run the application
 ```bash
 streamlit run app.py
 ```
+Visit `http://localhost:8501` in your browser.
 
-## How It Works
-1. The user enters a **topic or question** in the Streamlit UI.
-2. The system **fetches relevant data** from Wikipedia or ArXiv.
-3. The text is **converted into embeddings** and stored in a **FAISS index**.
-4. The **retrieved documents** are passed to a **Large Language Model (LLM)**.
-5. The **LLM (mixtral-8x7b-32768) generates a response** based on the stored knowledge.
-6. The response is displayed in the UI.
+---
 
-## Technologies Used
-- **Python**
-- **Streamlit** (UI Framework)
-- **FAISS** (Vector Search)
-- **LangChain** (LLM Processing)
-- **Groq API** (LLM Model [mixtral-8x7b-32768])
-- **HuggingFace Embeddings** (Text Vectorization)
-- **Wikipedia API** (Data Retrieval)
-- **ArXiv API** (Research Papers)
+## 📂 Project Structure
 
-## License
-This project is licensed under the MIT License.
+```
+AI-Knowledge-Retrieval/
+│
+├── app.py              # Streamlit UI — user input, query flow, response display
+├── backend.py          # Core logic — data fetching, embedding, FAISS indexing, LLM calls
+├── requirements.txt    # Python dependencies
+├── .env                # API keys (not committed to version control)
+└── README.md           # Project documentation
+```
+
+---
+
+## 💡 Key Learnings & Takeaways
+
+- Built a **retrieval-augmented generation (RAG) pipeline** that grounds LLM responses in live, external data
+- Used **HuggingFace open-source embeddings** as a cost-free alternative to proprietary embedding APIs
+- Integrated **multiple data source APIs** (Wikipedia + ArXiv) with a unified retrieval interface
+- Leveraged **Groq's inference speed** to keep end-to-end latency low despite multi-step pipeline
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+*Exploring dynamic knowledge grounding for LLMs using open-source tools and real-time data retrieval.*
